@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Employee Profile</title>
+	<style>
+
+	body {
+		background-color: #33ccff;
+	}
+	
+
+	#employeeFormId{
+
+	}
+	#employeeProfileImg { 
+		width: 100%; 
+		height: 100%;  
+		border-radius: 8px;
+		float: left;
+		display: block;
+		object-fit: cover;
+
+	}
+
+	#profileImgDivId { 
+		max-width: 10%;
+		height: auto;
+	}
+
+	#summaryDivId { 
+		max-width: 100%;
+		height: auto;
+		display: block;
+	}
+
+	#editSummaryInputDivId { 
+		max-width: 100%;
+		height: auto;
+		display: none;
+	}
+
+	.center{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#employeeDivContainerId{
+		width: 60%;
+		margin-top: 10%;
+		padding: 20px;
+		display: block;		
+		background-color: white;	
+		border-radius: 8px;
+		height: auto;
+	}
+
+	#profileImgLabelId{
+		display: block;
+		text-align: center;
+	}
+
+	#projectsInputId {
+		display: none;
+	}
+
+	#skillsInputId {
+		display: none;
+	}
+
+
+	.row::after {
+		content: "";
+		clear: 	both;
+		display: block;
+	}
+
+	#employeeProjectDivId{
+		width: 30%;
+		display: block;
+		float: left;
+		background-color: green;
+		height: auto;
+		border-radius: 8px;
+		margin-left: 20%;
+
+	}
+
+	#employeeSkillsDivId {
+		width: 30%;
+		display: block;
+		box-sizing: border-box;
+		float: right;
+		background-color: red;
+		height: auto;
+		border-radius: 8px;
+		margin-right: 20%;
+
+	}
+</style>
+
+</head>
+
+<body onload="EmployeeLoad()">
+	<form id="employeeFormId">
+		<div id="employeeDivContainerId" class="row center">
+			<label for="ProfileImg" id="profileImgLabelId"> Welcome Employee</label>
+			<div id="profileImgDivId">
+				<img id="employeeProfileImg" src="./largeFace.png" alt="Employee Profile Img">
+			</div>
+			<div id="editSummaryInputDivId">
+				<textarea name="summary" id="summaryTextAreaId" cols="50" rows="8"></textarea>
+			</div>
+			<div id="summaryDivId">
+				<p id="summaryPId">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat modi eligendi totam omnis at vitae odio voluptates labore. Esse enim quod deserunt culpa et temporibus eveniet maxime beatae quas porro.</p>
+			</div>
+			
+			<footer><button id="summaryButtonId" class="center" type="button" onclick="AddSummary()">Add Summary</button></footer>
+		</div>
+		
+		<div id="employeeProjectDivId">
+			<button id="projectsButtonId" class="center" type="button" onclick="InputProjects()">Add Projects</button>
+			<input type="text" id="projectsInputId" class="center" onkeydown="AddProjects()">
+			<ul id="employeeProjectListId">
+			</ul>
+		</div>
+
+		<div id="employeeSkillsDivId">
+			<button id="skillsButtonId" class="center" type="button" onclick="InputSkills()">Add Skills</button>
+			<input type="text" id="skillsInputId" class="center" onkeydown="AddSkills()">
+			<ul id="employeeProjectListId">
+			</ul>
+		</div>
+
+	</form>
+	
+</body>
+
+<script>
+	function EmployeeLoad()
+	{
+
+	}
+
+	function InputProjects()
+	{
+		// var ul = document.getElementById("employeeProjectListId");
+		// var li = document.createElement("li");
+		// var children = ul.children.length + 1;
+		// li.setAttribute("id", "Project"+children);
+		// li.appendChild(document.createTextNode("Project" + children));
+		// ul.appendChild(li);
+
+	}
+
+	function InputSkills()
+	{
+		var skillsInput = document.getElementById("skillsInputId");
+		var skillsButton = document.getElementById("skillsButtonId");
+
+		if (skillsInput.style.display === "none") {
+			skillsInput.style.display = "block";
+			skillsInput.value = "";
+			skillsButton.innerText = "Save Skills"
+		} 
+		else {
+			skillsInput.style.display = "none";	
+			summaryBtn.innerText = "Save Summary";
+		}
+
+	}
+
+	function AddSkills()
+	{
+		var skill = document.getElementById("skillsInputId").value;
+		var ul = document.getElementById("employeeProjectListId");
+		var li = document.createElement("li");
+		var children = ul.children.length + 1;
+		li.appendChild(document.createTextNode(skill.innerText));
+		ul.appendChild(li);
+
+	}
+
+	function AddSummary()
+	{
+		var pDiv = document.getElementById("summaryDivId");
+		var eDiv = document.getElementById("editSummaryInputDivId");
+		var summaryBtn = document.getElementById("summaryButtonId");
+
+		if (pDiv.style.display === "none") {
+			pDiv.style.display = "block";
+			eDiv.style.display = "none";
+			eDiv.value = "";
+			document.getElementById("summaryPId").innerText = document.getElementById("summaryTextAreaId").value;
+			document.getElementById("summaryButtonId").innerText = "Edit Summary";
+		} 
+		else {
+			pDiv.style.display = "none";
+			eDiv.style.display = "block";	
+			summaryBtn.innerText = "Save Summary";
+		}
+
+	}
+</script>
+</html>
